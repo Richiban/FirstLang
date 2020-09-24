@@ -12,6 +12,7 @@ module Keywords =
     let desc = "desc"
     let skip = "skip"
     let take = "take"
+    let ``as`` = "as"
 
 let ws = skipMany (skipChar ' ')
 let atLeast1ws = skipMany1 (skipChar ' ')
@@ -87,10 +88,18 @@ let parseSkip =
     .>> ws
     |>> Skip
 
+let parseAs =
+    skipString Keywords.``as``
+    >>. atLeast1ws
+    >>. (many1Chars (letter <|> digit) .>> ws |>> Some)
+    <|> (ws
+         |>> fun () -> None)
+
 let parseFrom =
     skipString Keywords.from
     >>. atLeast1ws
     >>. parseIdentifier
+    .>>. parseAs
     .>> ws
     |>> From
 

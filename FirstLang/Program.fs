@@ -6,6 +6,7 @@ open FParsec
 open FirstLang.Parsing
 
 let input = """
+from countries as c
 where population > 1000000 & country == 'UK'
 """
 

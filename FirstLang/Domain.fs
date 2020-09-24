@@ -27,6 +27,6 @@ type Statement =
     | OrderBy of Expression * OrderDirection
     | Skip of int
     | Take of int
-    | From of Expression
+    | From of Expression * identifier: string option
 
 type Query = { Statements: Statement list }
