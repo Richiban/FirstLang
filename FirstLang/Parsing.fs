@@ -1,4 +1,4 @@
-module FirstLang.Parsing
+module FirstLang.Parsing1
 
 open FirstLang.Domain
 open FParsec.CharParsers
